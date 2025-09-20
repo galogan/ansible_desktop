@@ -56,3 +56,13 @@
       user: velociraptor
       minute: "*/10"
       job: ansible-pull -o -U https://github.com/galogan/ansible_desktop.git
+ 
+  - name: Ensure Chocolatey is installed (if not already)
+    ansible.windows.win_chocolatey:
+      name: chocolatey
+      state: present
+
+  - name: Install Notepad++ using Chocolatey
+    ansible.windows.win_chocolatey:
+      name: notepadplusplus.install # Use the package name for Notepad++ in Chocolatey
+      state: present
